@@ -12,7 +12,7 @@ what_to_change = ["modulo", "table", "nothing"][1]
 change_by = 0.1  # recommended: 0.1 for table, 1 for modulo
 change_every = 6  # recommended: 6
 
-dont_touch = 0  # DON'T TOUCH
+counter = 0  # DON'T TOUCH
 
 
 def setup():
@@ -24,7 +24,7 @@ def setup():
 
 
 def draw():
-    global modulo, table, dont_touch, change_every
+    global modulo, table, counter, change_every
     py5.background(255)
 
     py5.fill(0)
@@ -45,9 +45,9 @@ def draw():
             center_y + (radius * math.sin(angle*((i*table) % modulo) - math.pi/2))
         )
 
-    dont_touch += 1
-    if dont_touch == change_every:
-        dont_touch = 0
+    counter += 1
+    if counter == change_every:
+        counter = 0
         if what_to_change == "modulo":
             modulo += change_by
         elif what_to_change == "table":
