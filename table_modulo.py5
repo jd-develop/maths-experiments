@@ -6,11 +6,11 @@ import py5
 import math
 import time
 
-modulo = 500  # start modulo
+modulo = 10  # start modulo
 table = 2  # start table
 
 what_to_change = ["modulo", "table", "rien", "module et table"][1]
-change_by = 0.05  # recommended: 0.01 for table (slow), 0.1 (faster), 1 for modulo (does not support floats)
+change_by = .05  # recommended: 0.01 for table (slow), 0.1 (faster), 1 for modulo (does not support floats)
 change_by_modulo = 1  # only if what_to_change is "module et table"
 change_every = 1  # recommended: 1 tick
 
@@ -72,6 +72,13 @@ def draw():
         elif what_to_change == "module et table":
             table += change_by
             modulo += change_by_modulo
+
+    if py5.is_key_pressed and py5.key == "m":
+        modulo += change_by_modulo
+        time.sleep(0.1)
+    if py5.is_key_pressed and py5.key == "t":
+        table += 1
+        time.sleep(0.1)
 
 
 py5.run_sketch()
